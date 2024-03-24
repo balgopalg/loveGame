@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        #game-container{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin:20px auto;
+            overflow: hidden;
+        }
+        button{
+            position: absolute;
+            border: none;
+            border-radius: 10px;
+            width: 90px;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            color:white;
+        }
+        #target{
+            right: 150px;
+            background-color: red;
+            transition: top 0.5s, left 0.5s;
+            z-index: 10;
+        }
+        #yes{
+            left: 150px;
+            background-color: #008fff;
+        }
+        h1{
+            text-align: center;
+        }
+        #result{
+            position: relative;
+            top:100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="game-container">
+            <div class="box">
+                <h1>Do you love me?</h1>
+                <button id="target">No</button>
+                <button id="yes">Yes</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </main>
+    <script>
+        const target=document.getElementById('target');
+        function moveTarget(){
+            const maxWidth=400;
+            const maxHeight=400;
+
+            const randomX=Math.floor(Math.random()*maxWidth);
+            const randomY=Math.floor(Math.random()*maxHeight);
+
+            target.style.left=randomX+"px";
+            target.style.top=randomY+"px";
+        }
+        target.addEventListener('mouseenter',function(){
+            moveTarget();
+        })
+
+        const yes=document.getElementById('yes');
+        yes.addEventListener('click',()=>{
+            document.getElementById('result').innerText="I LOVE YOU TOO 💘";
+        })
+    </script>
+</body>
+</html>
